@@ -12,13 +12,16 @@ function FacebookClient(oAuthToken) {
 module.exports = FacebookClient;
 
 FacebookClient.prototype.fetchUserInfos = function() {
-  return request('https://graph.facebook.com/me?oauth_token=' + this.oAuthToken)
+  return request('https://graph.facebook.com/me?fields=id,name,email&oauth_token=' + this.oAuthToken)
     .then(function(result) {
       var body = result[1];
       var json = JSON.parse(body);
 
       if (json.hasOwnProperty('error')) {
-        throw Error.new(json.error.message, json.error.code, json.error.type);
+        var err = new Error(json.error.message);
+        err.code = json.error.code;
+        err.name = json.error.type;
+        throw err;
       }
 
       return {
@@ -47,7 +50,10 @@ FacebookClient.prototype.fetchFriendsWithURL = function(url, friendsArr) {
       var json = JSON.parse(body);
 
       if (json.hasOwnProperty('error')) {
-        throw Error.new(json.error.message, json.error.code, json.error.type);
+        var err = new Error(json.error.message);
+        err.code = json.error.code;
+        err.name = json.error.type;
+        throw err;
       }
 
       json.data.forEach(function(friend) {
