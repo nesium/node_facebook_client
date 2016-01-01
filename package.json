@@ -1,0 +1,19 @@
+{
+  "name": "facebook_client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nesium/node_facebook_client.git"
+  },
+  "author": "Marc Bauer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nesium/node_facebook_client/issues"
+  },
+  "homepage": "https://github.com/nesium/node_facebook_client#readme"
+}
